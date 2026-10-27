@@ -17,7 +17,7 @@
 |---:|---|---|
 | 1 | Arya Bisma Putra Refman | 5027241036 |
 | 2 | M. Hikari Reiziq Rakhmadinta | 5027241079 |
-| 3 | Ahmad Syauqi Reza | 5027141085 |
+| 3 | Ahmad Syauqi Reza | 5027241085 |
 
 
 ## 1. Pendahuluan
