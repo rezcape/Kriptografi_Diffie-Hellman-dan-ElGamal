@@ -1,0 +1,302 @@
+/* Layout halaman Login dan Sign up.
+   Desktop (>=900px): dua kolom, kartu ilustrasi + form, sesuai frame Figma 1440px.
+   Mobile (<900px): satu kolom, ilustrasi disembunyikan. */
+
+.auth {
+  display: grid;
+  align-items: start;
+  align-content: start;
+  justify-content: space-between;
+  column-gap: clamp(32px, 7vw, 112px);
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 clamp(32px, 7.2vw, var(--page-margin)) var(--page-margin);
+}
+
+.auth--login {
+  grid-template-columns: minmax(320px, 512px) minmax(0, 616px);
+}
+
+.auth--signup {
+  grid-template-columns: minmax(0, 486px) minmax(360px, 640px);
+}
+
+/* Baris brand setinggi 104px: logo di y=51 seperti Figma, kartu mulai di y=104. */
+.auth__brand {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  height: var(--page-margin);
+  padding-top: 51px;
+}
+
+.auth--login .auth__brand {
+  justify-self: start;
+  margin-left: -42px; /* Figma: logo di x=62, kolom form di x=104 */
+}
+
+.auth--signup .auth__brand {
+  justify-self: end;
+}
+
+.auth__brand .brand__logo {
+  width: 33px;
+  height: 43px;
+}
+
+.auth__brand .brand__name {
+  font-size: 32px;
+  line-height: 1.5;
+  letter-spacing: -0.35px;
+}
+
+.auth__main {
+  grid-row: 2;
+  padding-top: 100px; /* judul di y=204 */
+}
+
+.auth--login .auth__main {
+  grid-column: 1;
+}
+
+.auth--signup .auth__main {
+  grid-column: 2;
+}
+
+.auth__art {
+  grid-row: 2;
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 616 / 816;
+  max-height: 816px;
+  border-radius: var(--radius-card-illustration);
+  background: var(--color-illustration-bg);
+  overflow: hidden;
+}
+
+.auth--login .auth__art {
+  grid-column: 2;
+}
+
+.auth--signup .auth__art {
+  grid-column: 1;
+  aspect-ratio: 486 / 816;
+}
+
+.auth__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Judul & subjudul */
+.auth__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.auth__title {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-semibold);
+  line-height: normal;
+  color: var(--color-text);
+}
+
+.auth__subtitle {
+  font-size: var(--fs-body);
+  line-height: normal;
+  color: var(--color-text);
+  opacity: 0.75;
+}
+
+/* Form */
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  margin-top: 35px;
+}
+
+.auth--signup .auth__form {
+  margin-top: var(--space-48);
+}
+
+.auth__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.auth__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+}
+
+.auth__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.auth__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  font-size: var(--fs-small);
+  line-height: 18px;
+  color: var(--color-muted);
+}
+
+.auth__note img {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.auth__switch {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  line-height: normal;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.auth__switch a {
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent-text);
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.auth__switch a:hover {
+  text-decoration: underline;
+}
+
+/* Checkbox persetujuan */
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
+  line-height: normal;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.check input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 3px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.check input:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+.check-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Meter kekuatan password */
+.strength {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-top: var(--space-4);
+}
+
+.strength__bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  flex: 1;
+  max-width: 240px;
+}
+
+.strength__bar {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.strength[data-level="0"] .strength__bar:nth-child(-n + 1) {
+  background: var(--color-error);
+}
+
+.strength[data-level="1"] .strength__bar:nth-child(-n + 2) {
+  background: var(--color-warning);
+}
+
+.strength[data-level="2"] .strength__bar {
+  background: var(--color-success);
+}
+
+.strength__label {
+  min-width: 96px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  line-height: 18px;
+  color: var(--color-muted);
+}
+
+/* Tablet & mobile */
+@media (max-width: 899.98px) {
+  .auth,
+  .auth--login,
+  .auth--signup {
+    grid-template-columns: minmax(0, 560px);
+    justify-content: center;
+    padding: 0 var(--gutter-mobile) var(--space-48);
+  }
+
+  .auth__art {
+    display: none;
+  }
+
+  .auth__brand,
+  .auth--login .auth__brand,
+  .auth--signup .auth__brand {
+    justify-self: start;
+    height: auto;
+    margin-left: 0;
+    padding-top: var(--space-24);
+  }
+
+  .auth__brand .brand__logo {
+    width: 24px;
+    height: 31px;
+  }
+
+  .auth__brand .brand__name {
+    font-size: 18px;
+    white-space: normal;
+  }
+
+  .auth--login .auth__main,
+  .auth--signup .auth__main {
+    grid-column: 1;
+    padding-top: var(--space-40);
+  }
+
+  .auth__title {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 599.98px) {
+  .auth__row {
+    grid-template-columns: 1fr;
+  }
+}

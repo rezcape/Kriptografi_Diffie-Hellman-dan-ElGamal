@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beranda · Diffie-Hellman &amp; ElGamal Auth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script type="module" src="js/home.js"></script>
+</head>
+<body class="home" hidden>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="home.html">
+        <img class="brand__logo" src="assets/logo.svg" alt="" width="34" height="34">
+        <span class="brand__name">Diffie-Hellman &amp; ElGamal</span>
+      </a>
+
+      <div class="topbar__actions">
+        <div class="userid-pill" title="Bagikan User ID ini ke teman untuk mengobrol">
+          <span class="userid-pill__label">User ID:</span>
+          <code class="userid-pill__code" id="account-userid"></code>
+          <button class="userid-pill__copy" id="copy-userid" type="button">Salin</button>
+        </div>
+
+        <div class="account">
+          <span class="account__avatar" id="account-initials" aria-hidden="true"></span>
+          <span class="account__text">
+            <span class="account__name" id="account-name"></span>
+            <span class="account__email" id="account-email"></span>
+          </span>
+        </div>
+        <button class="logout" id="logout" type="button">
+          <img src="assets/logout.svg" alt="" width="16" height="16">
+          Keluar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="home__main">
+    <div class="home__grid">
+      <section class="home__primary" aria-labelledby="greeting">
+        <div class="welcome">
+          <h1 class="welcome__title" id="greeting"></h1>
+          <p class="welcome__subtitle" id="weather-intro"></p>
+        </div>
+
+        <article class="card weather" id="weather" aria-busy="true" aria-labelledby="weather-location">
+          <!-- Loading -->
+          <div class="weather__skeleton" data-state="loading" aria-hidden="true">
+            <div class="skeleton skeleton--line skeleton--location"></div>
+            <div class="weather__skeleton-hero">
+              <div>
+                <div class="skeleton skeleton--temp"></div>
+                <div class="skeleton skeleton--line skeleton--condition"></div>
+              </div>
+              <div class="skeleton skeleton--art"></div>
+            </div>
+            <div class="weather__details">
+              <div class="skeleton skeleton--tile"></div>
+              <div class="skeleton skeleton--tile"></div>
+              <div class="skeleton skeleton--tile"></div>
+            </div>
+          </div>
+          <p class="visually-hidden" data-state="loading">Memuat cuaca...</p>
+
+          <!-- Data -->
+          <div class="weather__content" data-state="ready" hidden>
+            <div class="weather__top">
+              <span class="weather__pin"><img src="assets/pin.svg" alt="" width="16" height="16"></span>
+              <h2 class="weather__location" id="weather-location"></h2>
+            </div>
+
+            <div class="weather__hero">
+              <div class="weather__reading">
+                <p class="weather__temp"><span id="weather-temp"></span><span class="weather__unit">C</span></p>
+                <p class="weather__condition">
+                  <span class="weather__desc" id="weather-desc"></span>
+                  <span class="weather__feels" id="weather-feels"></span>
+                </p>
+              </div>
+              <img class="weather__art" id="weather-art" src="" alt="" width="144" height="144">
+            </div>
+
+            <hr class="weather__divider">
+
+            <dl class="weather__details">
+              <div class="tile">
+                <dt class="tile__label">Kelembapan</dt>
+                <dd class="tile__value" id="weather-humidity"></dd>
+              </div>
+              <div class="tile">
+                <dt class="tile__label">Angin</dt>
+                <dd class="tile__value" id="weather-wind"></dd>
+              </div>
+              <div class="tile">
+                <dt class="tile__label">Tekanan</dt>
+                <dd class="tile__value" id="weather-pressure"></dd>
+              </div>
+            </dl>
+
+            <div class="weather__footer">
+              <span>Data dari OpenWeather</span>
+              <span id="weather-updated"></span>
+            </div>
+          </div>
+
+          <!-- Error -->
+          <div class="weather__error" data-state="error" hidden>
+            <h2 class="weather__error-title">Cuaca belum bisa dimuat</h2>
+            <p class="weather__error-text" id="weather-error"></p>
+            <button class="button button--outline" id="weather-retry" type="button">Coba lagi</button>
+          </div>
+        </article>
+      </section>
+
+      <aside class="home__secondary" aria-labelledby="dh-title">
+        <article class="card rsa" id="dh-card">
+          <div class="rsa__header">
+            <span class="rsa__badge rsa__badge--ok" id="dh-badge">
+              <img id="dh-icon" src="assets/check.svg" alt="" width="16" height="16">
+            </span>
+            <div>
+              <h2 class="rsa__title" id="dh-title">Login diamankan Diffie-Hellman</h2>
+              <p class="rsa__subtitle" id="dh-subtitle">Pertukaran kunci sesi (diffie_hellman.py)</p>
+            </div>
+          </div>
+
+          <div class="rsa__box" id="dh-details">
+            <div class="rsa__item">
+              <p class="rsa__label">Tahap 1 — Parameter publik (p, g):</p>
+              <p class="rsa__value" id="dh-params"></p>
+            </div>
+            <div class="rsa__item">
+              <p class="rsa__label">Tahap 2 &amp; 3 — Pertukaran kunci publik (A, B):</p>
+              <p class="rsa__value rsa__value--scroll" id="dh-pubkeys"></p>
+            </div>
+            <div class="rsa__item">
+              <p class="rsa__label">Tahap 4 — Shared Secret Key (K = B^a mod p = A^b mod p):</p>
+              <p class="rsa__value" id="dh-shared"></p>
+            </div>
+            <div class="rsa__item">
+              <p class="rsa__label">Password terenkripsi (dikirim ke server):</p>
+              <p class="rsa__value rsa__value--scroll" id="dh-cipher" tabindex="0"></p>
+            </div>
+            <div class="rsa__status">
+              <span class="rsa__label">Tahap 5 — Verifikasi:</span>
+              <span class="rsa__ok"><span class="rsa__dot" aria-hidden="true"></span>K_client == K_server (Cocok)</span>
+            </div>
+          </div>
+
+          <p class="rsa__note">
+            <img src="assets/lock.svg" alt="" width="14" height="14">
+            <span id="dh-note">Kunci rahasia K disepakati tanpa pernah dikirim lewat jaringan.</span>
+          </p>
+        </article>
+      </aside>
+
+      <!-- Bagian Chat Sederhana ala WhatsApp menggunakan ElGamal.py -->
+      <section class="home__chat" aria-labelledby="chat-heading">
+        <article class="card wa">
+          <aside class="wa__sidebar">
+            <div class="wa__sidebar-head">
+              <div>
+                <h2 class="wa__title" id="chat-heading">Chat ElGamal</h2>
+                <p class="wa__mykey" id="my-elgamal-key"></p>
+              </div>
+            </div>
+
+            <form class="wa__add" id="add-friend-form" novalidate>
+              <label class="wa__add-label" for="friend-id-input">Tambah teman pakai User ID</label>
+              <div class="wa__add-row">
+                <input class="wa__add-input" id="friend-id-input" type="text"
+                       placeholder="Contoh: USR-1002" autocomplete="off" required>
+                <button class="wa__add-btn" type="submit">+ Tambah</button>
+              </div>
+              <p class="wa__add-feedback" id="add-friend-feedback" aria-live="polite"></p>
+            </form>
+
+            <div class="wa__contacts-title">Daftar Kontak Teman</div>
+            <ul class="wa__contacts" id="contact-list" role="listbox" aria-label="Daftar kontak"></ul>
+          </aside>
+
+          <div class="wa__main">
+            <header class="wa__header" id="chat-header">
+              <div class="wa__peer">
+                <span class="wa__avatar" id="peer-avatar">B</span>
+                <div>
+                  <h3 class="wa__peer-name" id="peer-name">Pilih kontak teman</h3>
+                  <p class="wa__peer-sub" id="peer-pubkey">Kunci publik ElGamal penerima akan tampil di sini</p>
+                </div>
+              </div>
+            </header>
+
+            <div class="wa__messages" id="chat-messages" aria-live="polite"></div>
+
+            <form class="wa__composer" id="chat-form">
+              <input class="wa__input" id="chat-input" type="text"
+                     placeholder="Ketik pesan (mis. HALO) lalu kirim dengan enkripsi ElGamal..."
+                     autocomplete="off" required>
+              <button class="wa__send" id="chat-send" type="submit">Kirim</button>
+            </form>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="home__footer">
+    <p>© <span id="year"></span> Tugas Kriptografi Kelompok 4 · Diffie-Hellman &amp; ElGamal.</p>
+  </footer>
+</body>
+</html>
+

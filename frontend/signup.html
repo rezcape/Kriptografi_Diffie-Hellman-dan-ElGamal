@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daftar · Diffie-Hellman &amp; ElGamal Auth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script type="module" src="js/signup.js"></script>
+</head>
+<body>
+  <div class="auth auth--signup">
+    <header class="auth__brand">
+      <a class="brand" href="login.html">
+        <img class="brand__logo" src="assets/logo-auth.svg" alt="" width="33" height="43">
+        <span class="brand__name">Diffie-Hellman &amp; ElGamal</span>
+      </a>
+    </header>
+
+    <figure class="auth__art" aria-hidden="true">
+      <img src="assets/signup-illustration.png" alt="" width="626" height="626">
+    </figure>
+
+    <main class="auth__main">
+      <div class="auth__header">
+        <h1 class="auth__title">Buat akunmu</h1>
+        <p class="auth__subtitle">Setiap akun otomatis mendapat User ID dan pasangan kunci ElGamal untuk chat.</p>
+      </div>
+
+      <p class="form-status" id="form-status" role="status"></p>
+
+      <form class="auth__form" id="signup-form" novalidate>
+        <div class="auth__fields">
+          <div class="auth__row">
+            <div class="field">
+              <div class="field__control">
+                <label class="field__label" for="firstName">Nama depan</label>
+                <input class="field__input" id="firstName" name="firstName" type="text"
+                       autocomplete="given-name" placeholder="Nama depanmu"
+                       aria-describedby="firstName-error" required>
+              </div>
+              <p class="field__error" id="firstName-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <div class="field__control">
+                <label class="field__label" for="lastName">Nama belakang</label>
+                <input class="field__input" id="lastName" name="lastName" type="text"
+                       autocomplete="family-name" placeholder="Nama belakangmu"
+                       aria-describedby="lastName-error" required>
+              </div>
+              <p class="field__error" id="lastName-error" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="auth__row">
+            <div class="field">
+              <div class="field__control">
+                <label class="field__label" for="email">Email</label>
+                <input class="field__input" id="email" name="email" type="email"
+                       autocomplete="email" inputmode="email" placeholder="nama@email.com"
+                       aria-describedby="email-error" required>
+              </div>
+              <p class="field__error" id="email-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <div class="field__control">
+                <label class="field__label" for="phone">Nomor HP</label>
+                <input class="field__input" id="phone" name="phone" type="tel"
+                       autocomplete="tel" inputmode="tel" placeholder="08xxxxxxxxxx"
+                       aria-describedby="phone-error" required>
+              </div>
+              <p class="field__error" id="phone-error" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field__control">
+              <label class="field__label" for="password">Password</label>
+              <input class="field__input" id="password" name="password" type="password"
+                     autocomplete="new-password" placeholder="Buat password"
+                     aria-describedby="password-hint password-strength password-error" required>
+              <button class="field__toggle" type="button" data-toggle-password="password"
+                      aria-controls="password" aria-pressed="false" aria-label="Tampilkan password">
+                <img src="assets/eye-off.svg" alt="" width="24" height="24">
+              </button>
+            </div>
+            <div class="strength" id="strength" data-level="">
+              <div class="strength__bars" aria-hidden="true">
+                <span class="strength__bar"></span>
+                <span class="strength__bar"></span>
+                <span class="strength__bar"></span>
+              </div>
+              <p class="strength__label" id="password-strength" aria-live="polite"></p>
+            </div>
+            <p class="field__hint" id="password-hint">Minimal 8 karakter, campur huruf dan angka.</p>
+            <p class="field__error" id="password-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <div class="field__control">
+              <label class="field__label" for="confirmPassword">Konfirmasi password</label>
+              <input class="field__input" id="confirmPassword" name="confirmPassword" type="password"
+                     autocomplete="new-password" placeholder="Ulangi password"
+                     aria-describedby="confirmPassword-error" required>
+              <button class="field__toggle" type="button" data-toggle-password="confirmPassword"
+                      aria-controls="confirmPassword" aria-pressed="false" aria-label="Tampilkan konfirmasi password">
+                <img src="assets/eye-off.svg" alt="" width="24" height="24">
+              </button>
+            </div>
+            <p class="field__error" id="confirmPassword-error" aria-live="polite"></p>
+          </div>
+
+          <div class="check-group">
+            <label class="check">
+              <input id="agree" name="agree" type="checkbox" aria-describedby="agree-error" required>
+              Saya setuju dengan Syarat dan Kebijakan Privasi
+            </label>
+            <p class="field__error" id="agree-error" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="auth__actions">
+          <button class="button button--primary" type="submit">Buat akun</button>
+          <p class="auth__switch">Sudah punya akun? <a href="login.html">Masuk</a></p>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+<svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path transform="translate(-2 -28)" d="M43.2 100.8C36.3832 100.8 30.8571 95.2739 30.8571 88.4571C30.8571 82.0207 35.7799 76.7324 42.0725 76.1693C43.4786 65.7072 52.3717 57.6 63.2571 57.6C73.4332 57.6 81.8504 64.7125 83.9837 74.2862C86.2192 72.8488 88.8878 72 91.7486 72C99.9288 72 106.56 78.6312 106.56 86.8114C106.56 87.1929 106.546 87.5709 106.517 87.9448C110.311 89.5418 112.937 93.3214 112.937 97.7143C112.937 103.395 108.332 108 102.651 108H43.2C40.9278 108 39.0857 106.158 39.0857 103.886V100.8H43.2V100.8" fill="url(#cloud)"/>
+<path d="M74 82L58 108H71L64 130L88 98H74L82 82H74Z" fill="url(#bolt)"/>
+<g stroke="#7FB2F0" stroke-width="5" stroke-linecap="round">
+<path d="M46 92L41 106"/><path d="M98 92L93 106"/>
+</g>
+<defs>
+<linearGradient id="cloud" x1="30.86" y1="57.6" x2="112.94" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#C9D2E3"/><stop offset="1" stop-color="#7D8AA6"/></linearGradient>
+<linearGradient id="bolt" x1="58" y1="82" x2="88" y2="130" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD452"/><stop offset="1" stop-color="#FF9E1B"/></linearGradient>
+</defs>
+</svg>

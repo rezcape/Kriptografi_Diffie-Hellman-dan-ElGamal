@@ -1,0 +1,75 @@
+/* Nilai desain dari Figma "Login - Register Web UI Kit" (node 1:3772, 1:3905, 1006:273).
+   Nilai yang bukan dari Figma diberi komentar beserta alasannya. */
+:root {
+  /* Warna: halaman auth */
+  --color-primary: #515def;
+  --color-on-primary: #f3f3f3;
+  --color-text: #313131;
+  --color-input-text: #1c1b1f;
+  --color-input-border: #79747e;
+  --color-accent: #ff8682;            /* coral: hanya non-teks (border tombol Keluar, ikon) */
+  --color-accent-soft: #fff5f4;       /* bukan Figma: hover tombol Keluar */
+  --color-accent-text: #c2453f;       /* bukan Figma: coral digelapkan untuk teks, 4,98:1 di putih */
+  --color-placeholder: #6b6e76;       /* bukan Figma: 5,1:1 di putih */
+  --color-error: #b3261e;             /* bukan Figma: 6,5:1 di putih */
+  --color-error-soft: #fdecea;        /* bukan Figma: latar pesan error form */
+  --color-surface: #ffffff;
+  --color-illustration-bg: #d9d9d9;
+  --color-divider: rgba(49, 49, 49, 0.25);
+
+  /* Warna: halaman home */
+  --color-page: #f7f6f3;
+  --color-ink: #1f2430;
+  --color-muted: #5b6270;             /* juga menggantikan teks abu ber-alpha di Figma (kontras) */
+  --color-border: #e6e8ec;
+  --color-border-soft: #f1f5f9;
+  --color-subtle: #f8fafc;
+  --color-primary-soft: #eef0fd;
+  --color-primary-strong: #3f4bdb;    /* bukan Figma: teks inisial di --color-primary-soft, 5,7:1 */
+  --color-primary-tint: rgba(81, 93, 239, 0.1);
+  --color-success: #10b981;
+  --color-success-text: #047857;      /* bukan Figma (#059669 hanya 3,6:1), 5,2:1 */
+  --color-success-soft: rgba(209, 250, 229, 0.8);
+  --color-success-bg: #ecfdf5;
+  --color-warning: #d97706;           /* bukan Figma: meter "Cukup" */
+
+  /* Tipografi */
+  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --fs-display: 40px;
+  --fs-body: 16px;
+  --fs-label: 14px;
+  --fs-small: 12px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Ukuran & jarak */
+  --field-height: 56px;
+  --button-height: 48px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --page-margin: 104px;
+  --gutter-mobile: 16px;
+
+  /* Radius */
+  --radius-field: 4px;
+  --radius-card-illustration: 30px;
+  --radius-card: 20px;
+  --radius-inner: 12px;
+  --radius-chip: 8px;
+  --radius-pill: 9999px;
+
+  /* Bayangan kartu home */
+  --shadow-card: 0 10px 30px -5px rgba(25, 33, 61, 0.05), 0 4px 12px -2px rgba(25, 33, 61, 0.02);
+
+  /* Fokus */
+  --focus-ring: 0 0 0 3px rgba(81, 93, 239, 0.45);
+}

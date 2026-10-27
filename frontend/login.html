@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masuk · Diffie-Hellman &amp; ElGamal Auth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script type="module" src="js/login.js"></script>
+</head>
+<body>
+  <div class="auth auth--login">
+    <header class="auth__brand">
+      <a class="brand" href="login.html">
+        <img class="brand__logo" src="assets/logo-auth.svg" alt="" width="33" height="43">
+        <span class="brand__name">Diffie-Hellman &amp; ElGamal</span>
+      </a>
+    </header>
+
+    <main class="auth__main">
+      <div class="auth__header">
+        <h1 class="auth__title">Selamat datang kembali</h1>
+        <p class="auth__subtitle">Masuk untuk melihat cuaca Surabaya dan mengirim pesan terenkripsi ElGamal.</p>
+      </div>
+
+      <p class="form-status" id="form-status" role="status"></p>
+
+      <form class="auth__form" id="login-form" novalidate>
+        <div class="auth__fields">
+          <div class="field">
+            <div class="field__control">
+              <label class="field__label" for="email">Email</label>
+              <input class="field__input" id="email" name="email" type="email"
+                     autocomplete="email" inputmode="email" placeholder="nama@email.com"
+                     aria-describedby="email-error" required>
+            </div>
+            <p class="field__error" id="email-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <div class="field__control">
+              <label class="field__label" for="password">Password</label>
+              <input class="field__input" id="password" name="password" type="password"
+                     autocomplete="current-password" placeholder="Masukkan password"
+                     aria-describedby="password-error" required>
+              <button class="field__toggle" type="button" data-toggle-password="password"
+                      aria-controls="password" aria-pressed="false" aria-label="Tampilkan password">
+                <img src="assets/eye-off.svg" alt="" width="24" height="24">
+              </button>
+            </div>
+            <p class="field__error" id="password-error" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="auth__actions">
+          <button class="button button--primary" type="submit">Masuk</button>
+          <p class="auth__note">
+            <img src="assets/lock.svg" alt="" width="14" height="14">
+            Passwordmu diamankan dengan kunci bersama Diffie-Hellman sebelum dikirim.
+          </p>
+          <p class="auth__switch">Belum punya akun? <a href="signup.html">Daftar</a></p>
+        </div>
+      </form>
+    </main>
+
+    <figure class="auth__art" aria-hidden="true">
+      <img src="assets/login-illustration.png" alt="" width="626" height="626">
+    </figure>
+  </div>
+</body>
+</html>
+

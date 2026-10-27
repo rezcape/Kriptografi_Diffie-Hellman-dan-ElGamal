@@ -1,0 +1,9 @@
+<svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M88 30C70 32 56 47.5 56 66C56 86 72.2 102 92 102C101 102 109.2 98.7 115.5 93.2C110.7 106.6 97.9 116 83 116C63.7 116 48 100.3 48 81C48 58.6 65.9 40.3 88 30Z" transform="translate(-6 -8)" fill="url(#moon)"/>
+<circle cx="104" cy="40" r="3" fill="#C9D3F5"/>
+<circle cx="116" cy="60" r="2" fill="#C9D3F5"/>
+<circle cx="96" cy="58" r="1.6" fill="#C9D3F5"/>
+<defs>
+<linearGradient id="moon" x1="48" y1="30" x2="116" y2="116" gradientUnits="userSpaceOnUse"><stop stop-color="#E4E8FB"/><stop offset="1" stop-color="#8E9BE0"/></linearGradient>
+</defs>
+</svg>
