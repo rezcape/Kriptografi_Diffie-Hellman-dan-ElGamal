@@ -58,13 +58,9 @@ Bilangan g disebut akar primitif modulo p jika pangkat g membangkitkan seluruh e
 
 Dua pihak, Alice dan Bob, menyepakati parameter publik p dan g. Masing-masing memilih kunci privat acak, menghitung kunci publik, saling bertukar kunci publik, lalu menghitung kunci rahasia bersama.
 
-$$
-A = g^{a} \bmod p \qquad B = g^{b} \bmod p
-$$
+<p align="center"><em>A</em> = <em>g</em><sup><em>a</em></sup> mod <em>p</em> &emsp;&emsp; <em>B</em> = <em>g</em><sup><em>b</em></sup> mod <em>p</em></p>
 
-$$
-K = B^{a} \bmod p = A^{b} \bmod p = g^{ab} \bmod p
-$$
+<p align="center"><em>K</em> = <em>B</em><sup><em>a</em></sup> mod <em>p</em> = <em>A</em><sup><em>b</em></sup> mod <em>p</em> = <em>g</em><sup><em>ab</em></sup> mod <em>p</em></p>
 
 Penyadap yang hanya mengetahui p, g, A, dan B harus menyelesaikan logaritma diskrit untuk mendapatkan K.
 
@@ -72,21 +68,15 @@ Penyadap yang hanya mengetahui p, g, A, dan B harus menyelesaikan logaritma disk
 
 ElGamal adalah algoritma kunci publik yang terdiri dari tiga proses. Pada pembangkitan kunci, penerima memilih kunci privat x dengan 1 < x < p-1, lalu menghitung kunci publik y. Kunci publik berupa tiga bilangan (y, g, p).
 
-$$
-y = g^{x} \bmod p
-$$
+<p align="center"><em>y</em> = <em>g</em><sup><em>x</em></sup> mod <em>p</em></p>
 
 Pada enkripsi, pengirim mengubah pesan menjadi blok bilangan m dengan 0 ≤ m ≤ p-1, memilih bilangan acak k dengan 1 < k < p-1 untuk setiap blok, lalu menghitung pasangan cipherteks (a, b).
 
-$$
-a = g^{k} \bmod p \qquad b = (y^{k} \cdot m) \bmod p
-$$
+<p align="center"><em>a</em> = <em>g</em><sup><em>k</em></sup> mod <em>p</em> &emsp;&emsp; <em>b</em> = (<em>y</em><sup><em>k</em></sup> · <em>m</em>) mod <em>p</em></p>
 
 Pada dekripsi, penerima menggunakan kunci privat x. Invers modulo (a<sup>x</sup>)<sup>-1</sup> dihitung dengan Teorema Kecil Fermat, yaitu a<sup>p-1</sup> ≡ 1 (mod p), sehingga a<sup>p-1-x</sup> adalah invers dari a<sup>x</sup>.
 
-$$
-m = \left(b \cdot a^{\,p-1-x}\right) \bmod p
-$$
+<p align="center"><em>m</em> = (<em>b</em> · <em>a</em><sup><em>p</em>-1-<em>x</em></sup>) mod <em>p</em></p>
 
 Kebenaran dekripsi dapat dibuktikan secara langsung. Karena b = y<sup>k</sup> · m = g<sup>xk</sup> · m dan a<sup>x</sup> = g<sup>kx</sup>, maka b · (a<sup>x</sup>)<sup>-1</sup> = g<sup>xk</sup> · m · g<sup>-kx</sup> = m. Karena k dipilih acak untuk setiap blok, pesan yang sama menghasilkan cipherteks yang berbeda pada setiap pengiriman (enkripsi probabilistik).
 
@@ -381,14 +371,14 @@ Pengujian memakai p = 2273, g = 3, dan x = 243 sehingga y = 3<sup>243</sup> mod 
 
 **Tabel 6. Enkripsi ElGamal pada contoh slide**
 
-| Blok | m | k | a = 3^{k} mod 2273 | b = (461^{k} · m) mod 2273 | Cipherteks |
+| Blok | m | k | a = 3<sup>k</sup> mod 2273 | b = (461<sup>k</sup> · m) mod 2273 | Cipherteks |
 |---|---|---|---|---|---|
 | 1 | 700 | 1463 | 1439 | 74 | (1439, 74) |
 | 2 | 1114 | 2001 | 1220 | 1682 | (1220, 1682) |
 
 **Tabel 7. Dekripsi ElGamal pada contoh slide**
 
-| Blok | Cipherteks | Invers (a^{x})^{-1} = a^{2029} mod 2273 | m = (b · invers) mod 2273 | Hasil |
+| Blok | Cipherteks | Invers (a<sup>x</sup>)<sup>-1</sup> = a<sup>2029</sup> mod 2273 | m = (b · invers) mod 2273 | Hasil |
 |---|---|---|---|---|
 | 1 | (1439, 74) | 1791 | 74 · 1791 mod 2273 = 700 | 0700 |
 | 2 | (1220, 1682) | 1125 | 1682 · 1125 mod 2273 = 1114 | 1114 |

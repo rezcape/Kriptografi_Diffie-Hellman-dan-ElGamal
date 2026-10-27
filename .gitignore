@@ -60,3 +60,6 @@ Desktop.ini
 
 # Log files
 *.log
+
+# Temporary report print artifacts
+report_print.html

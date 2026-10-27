@@ -38,14 +38,14 @@ Laporan lengkap berstandar akademik yang memuat teori, perancangan arsitektur, p
 
 1. **Implementasi Kriptografi Mandiri (From Scratch):**
    - Modul `random` pada Python hanya difungsikan untuk pembangkitan bilangan acak.
-   - Perpangkatan modular (*square-and-multiply* berbobot $O(\log e)$), uji prima *Miller-Rabin*, pencarian akar primitif / generator, pembangkitan kunci, enkripsi pasangan $(a, b)$, dan dekripsi invers modulo via *Teorema Kecil Fermat* ditulis murni dari nol.
+   - Perpangkatan modular (*square-and-multiply* berbobot O(log e)), uji prima *Miller-Rabin*, pencarian akar primitif / generator, pembangkitan kunci, enkripsi pasangan (a, b), dan dekripsi invers modulo via *Teorema Kecil Fermat* ditulis murni dari nol.
 2. **Antarmuka CLI untuk Pembuktian Tahapan:**
    - Menyediakan simulasi setiap tahapan perhitungan matematis secara terisolasi, baik dengan data acak, masukan parameter manual, maupun verifikasi contoh resmi dari slide materi perkuliahan Pertemuan ke-9.
 3. **Pengamanan Login Menggunakan Diffie-Hellman:**
-   - Klien (browser) dan server menyepakati *Shared Secret Key* ($K$) melalui kanal tidak aman tanpa pernah mentransmisikan kunci privat maupun kata sandi asli dalam bentuk plainteks.
+   - Klien (browser) dan server menyepakati *Shared Secret Key* (K) melalui kanal tidak aman tanpa pernah mentransmisikan kunci privat maupun kata sandi asli dalam bentuk plainteks.
 4. **Percakapan Multi-Akun Menggunakan ElGamal:**
    - Setiap pengguna memiliki User ID unik (misalnya `USR-1001` dan `USR-1002`) serta pasangan kunci ElGamal masing-masing.
-   - Menggunakan enkripsi probabilistik di mana teks yang sama menghasilkan pasangan cipherteks $(a, b)$ yang berbeda pada setiap pengiriman.
+   - Menggunakan enkripsi probabilistik di mana teks yang sama menghasilkan pasangan cipherteks (a, b) yang berbeda pada setiap pengiriman.
    - Dilengkapi inspektur tahapan pada setiap gelembung pesan untuk membedah perhitungan Tahap 1, 2, dan 3.
 5. **Seeding Akun Otomatis:**
    - Server otomatis menyiapkan 2 akun siap pakai saat pertama kali dijalankan sehingga proses pengujian multi-tab dapat dilakukan tanpa registrasi manual.
@@ -66,12 +66,12 @@ python3 ElGamal.py
 
 ### Opsi Menu CLI:
 - **`diffie_hellman.py`:**
-  - `[1]` Bangkitkan parameter acak (prima $p$ dan generator $g$)
-  - `[2]` Masukkan parameter manual (misal: contoh slide $p=251, g=6, a=124, b=158 \implies K=79$)
+  - `[1]` Bangkitkan parameter acak (prima p dan generator g)
+  - `[2]` Masukkan parameter manual (misal: contoh slide p = 251, g = 6, a = 124, b = 158 -> K = 79)
 - **`ElGamal.py`:**
   - `[1]` Pembangkitan kunci dan enkripsi string acak
   - `[2]` Masukan manual parameter dan teks
-  - `[3]` Menjalankan contoh resmi slide materi perkuliahan ($p=2273, g=3, x=243, y=461$, pesan `'HALO'`)
+  - `[3]` Menjalankan contoh resmi slide materi perkuliahan (p = 2273, g = 3, x = 243, y = 461, pesan 'HALO')
 
 ---
 
@@ -97,38 +97,38 @@ python3 frontend/dev_server.py
 
 Dua akun telah di-seed secara otomatis pada file konfigurasi:
 
-| Akun | User ID | Email | Password | Kunci Privat $x$ | Kunci Publik ElGamal $(y, g, p)$ |
+| Akun | User ID | Email | Password | Kunci Privat x | Kunci Publik ElGamal (y, g, p) |
 |---|---|---|---|:---:|:---:|
 | Hikari Reiziq | `USR-1001` | `hikari@its.ac.id` | `Password123` | `243` | `(461, 3, 2273)` |
 | Arya Bisma | `USR-1002` | `bisma@its.ac.id` | `Password123` | `517` | `(571, 3, 2273)` |
 
-*Keterangan:* Kunci publik Bisma dihitung melalui formula $y = g^x \bmod p = 3^{517} \bmod 2273 = 571$.
+*Keterangan:* Kunci publik Bisma dihitung melalui formula y = g<sup>x</sup> mod p = 3<sup>517</sup> mod 2273 = 571.
 
 ### Prosedur Pengujian Aplikasi:
 1. Buka **Tab 1** pada `http://localhost:5173`, kemudian login menggunakan `hikari@its.ac.id` / `Password123`.
 2. Buka **Tab 2** pada `http://localhost:5173`, kemudian login menggunakan `bisma@its.ac.id` / `Password123`.
 3. Pada Tab 1, masukkan `USR-1002` pada kolom **Tambah teman pakai User ID**, lalu klik **+ Tambah**.
 4. Kirim pesan (misalnya `HALO BISMA`).
-5. Klik **Lihat Tahapan ElGamal (Tahap 1, 2, 3)** pada gelembung pesan untuk memverifikasi proses pembangkitan pasangan cipherteks $(a, b)$ dan pemulihan plainteks $m = b \cdot (a^x)^{-1} \bmod p$.
+5. Klik **Lihat Tahapan ElGamal (Tahap 1, 2, 3)** pada gelembung pesan untuk memverifikasi proses pembangkitan pasangan cipherteks (a, b) dan pemulihan plainteks m = (b · (a<sup>x</sup>)<sup>-1</sup>) mod p.
 
 ---
 
 ## 4. Ringkasan Verifikasi Contoh Slide Perkuliahan
 
-### A. Diffie-Hellman ($p=251, g=6$)
-- Kunci privat Alice $a = 124 \implies A = 6^{124} \bmod 251 = 209$
-- Kunci privat Bob $b = 158 \implies B = 6^{158} \bmod 251 = 197$
-- Kunci bersama Alice: $K_{\text{Alice}} = 197^{124} \bmod 251 = \mathbf{79}$
-- Kunci bersama Bob: $K_{\text{Bob}} = 209^{158} \bmod 251 = \mathbf{79}$
-- **Hasil:** $K_{\text{Alice}} = K_{\text{Bob}} = 79$ *(Cocok 100% dengan materi perkuliahan)*
+### A. Diffie-Hellman (p = 251, g = 6)
+- Kunci privat Alice a = 124 -> A = 6<sup>124</sup> mod 251 = 209
+- Kunci privat Bob b = 158 -> B = 6<sup>158</sup> mod 251 = 197
+- Kunci bersama Alice: K_Alice = 197<sup>124</sup> mod 251 = 79
+- Kunci bersama Bob: K_Bob = 209<sup>158</sup> mod 251 = 79
+- **Hasil:** K_Alice = K_Bob = 79 *(Cocok 100% dengan materi perkuliahan)*
 
-### B. ElGamal ($p=2273, g=3, x=243 \implies y=461$, Pesan `'HALO'`)
-- Blok 1: $m = 700$, $k = 1463 \implies a = 3^{1463} \bmod 2273 = 1439$, $b = (461^{1463} \cdot 700) \bmod 2273 = 74 \implies \mathbf{(1439, 74)}$
-- Blok 2: $m = 1114$, $k = 2001 \implies a = 3^{2001} \bmod 2273 = 1220$, $b = (461^{2001} \cdot 1114) \bmod 2273 = 1682 \implies \mathbf{(1220, 1682)}$
-- Dekripsi Invers: $a^{p-1-x} \bmod p = a^{2029} \bmod 2273$
-  - Blok 1: $74 \cdot 1791 \bmod 2273 = \mathbf{700}$ (`HA`)
-  - Blok 2: $1682 \cdot 1125 \bmod 2273 = \mathbf{1114}$ (`LO`)
-- **Hasil:** Pesan `'HALO'` pulih sempurna *(Cocok 100% dengan materi perkuliahan)*
+### B. ElGamal (p = 2273, g = 3, x = 243 -> y = 461, Pesan 'HALO')
+- Blok 1: m = 700, k = 1463 -> a = 3<sup>1463</sup> mod 2273 = 1439, b = (461<sup>1463</sup> · 700) mod 2273 = 74 -> (1439, 74)
+- Blok 2: m = 1114, k = 2001 -> a = 3<sup>2001</sup> mod 2273 = 1220, b = (461<sup>2001</sup> · 1114) mod 2273 = 1682 -> (1220, 1682)
+- Dekripsi Invers: a<sup>p-1-x</sup> mod p = a<sup>2029</sup> mod 2273
+  - Blok 1: 74 · 1791 mod 2273 = 700 ('HA')
+  - Blok 2: 1682 · 1125 mod 2273 = 1114 ('LO')
+- **Hasil:** Pesan 'HALO' pulih sempurna *(Cocok 100% dengan materi perkuliahan)*
 
 ---
 
