@@ -32,11 +32,16 @@ ENV/
 
 # Archives & temporary bundles
 *.zip
+*.ZIP
+**/*.zip
+**/*.ZIP
 *.tar
 *.tar.gz
 *.tgz
 *.rar
 *.7z
+_extracted/
+_extracted*/
 
 # Node.js
 node_modules/
