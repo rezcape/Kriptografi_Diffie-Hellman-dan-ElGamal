@@ -1,4 +1,62 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 *.pyc
-backend/.env
 
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+MANIFEST
+
+# Environment variables & secrets
+.env
+.env.*
+backend/.env
+!.env.example
+!backend/.env.example
+
+# Virtual environments
+.venv
+env/
+venv/
+ENV/
+
+# Archives & temporary bundles
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor & IDE directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
