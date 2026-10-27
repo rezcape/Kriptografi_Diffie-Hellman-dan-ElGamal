@@ -27,8 +27,9 @@ Seluruh operasi matematis kriptografi ditulis **murni dari nol tanpa library ata
 
 Laporan lengkap berstandar akademik yang memuat teori, perancangan arsitektur, pemetaan fungsi ke kode sumber, 13 skenario pengujian endpoint, analisis batasan, dan daftar pustaka tersedia dalam berkas berikut:
 
-- **Laporan Format Markdown:** [README_LAPORAN.md](README_LAPORAN.md) *(Laporan komprehensif 7 bagian dengan diagram alur dan tangkapan layar)*
+- **Laporan Format PDF (.pdf):** [Laporan_Kelompok_4_Diffie-Hellman_ElGamal.pdf](Laporan_Kelompok_4_Diffie-Hellman_ElGamal.pdf) *(Format dokumen PDF resmi siap cetak)*
 - **Laporan Format Word (.docx):** [Laporan_Kelompok_4_Diffie-Hellman_ElGamal.docx](Laporan_Kelompok_4_Diffie-Hellman_ElGamal.docx) *(Format dokumen resmi 21 halaman dengan gambar tersemat)*
+- **Laporan Format Markdown:** [README_LAPORAN.md](README_LAPORAN.md) *(Laporan komprehensif 7 bagian dengan diagram alur dan tangkapan layar)*
 - **Arsip Pengumpulan ZIP:** `Kelompok_4_Arya_Hikari_Syauqi.zip` *(Arsip final sesuai penamaan tugas Classroom ITS)*
 
 ---
@@ -137,6 +138,7 @@ Dua akun telah di-seed secara otomatis pada file konfigurasi:
 Kriptografi_Diffie-Hellman-dan-ElGamal/
 ├── README.md                                    # Panduan utama repositori
 ├── README_LAPORAN.md                            # Laporan lengkap versi Markdown (7 Bagian)
+├── Laporan_Kelompok_4_Diffie-Hellman_ElGamal.pdf # Laporan lengkap versi PDF siap cetak
 ├── Laporan_Kelompok_4_Diffie-Hellman_ElGamal.docx # Laporan lengkap versi Word (.docx)
 ├── images/                                      # Diagram alur dan tangkapan layar aplikasi/CLI
 ├── diffie_hellman.py                            # Modul dan simulasi CLI Diffie-Hellman murni
