@@ -437,12 +437,15 @@ class RequestHandler(BaseHTTPRequestHandler):
         friendships.setdefault(user["userId"], set()).add(to_id)
         friendships.setdefault(to_id, set()).add(user["userId"])
 
-        msg = build_elgamal_message(user, receiver, text)
+        try:
+            msg = build_elgamal_message(user, receiver, text)
 
-        # Jika mengirim ke kontak demo USR-1000, balas otomatis agar mudah diuji
-        if to_id == "USR-1000":
-            reply_text = f"Pesan '{text}' berhasil didekripsi dengan ElGamal (p={ELGAMAL_P}, g={ELGAMAL_G})!"
-            build_elgamal_message(receiver, user, reply_text)
+            # Jika mengirim ke kontak demo USR-1000, balas otomatis agar mudah diuji
+            if to_id == "USR-1000":
+                reply_text = f"Pesan '{text}' berhasil didekripsi dengan ElGamal (p={ELGAMAL_P}, g={ELGAMAL_G})!"
+                build_elgamal_message(receiver, user, reply_text)
+        except ValueError as err:
+            return self.send_json(400, {"error": "INVALID_CHARACTER", "message": str(err)})
 
         return self.send_json(201, {"message": msg})
 

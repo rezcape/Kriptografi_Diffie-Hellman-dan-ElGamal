@@ -337,8 +337,11 @@ function init() {
     try {
       await sendChatMessage(activeFriend.userId, text);
       await refreshMessages(true);
-    } catch {
+    } catch (err) {
       input.value = text;
+      if (err && err.code === "INVALID_CHARACTER") {
+        alert("Pesan mengandung karakter di luar rentang ElGamal p=2273 (misalnya emoji). Silakan gunakan karakter teks standar / ASCII.");
+      }
     }
   });
 

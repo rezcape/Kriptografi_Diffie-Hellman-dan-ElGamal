@@ -41,6 +41,7 @@ function failFrom({ status, body }) {
   if (status === 409 || body?.error === "EMAIL_TAKEN") return new AuthError("EMAIL_TAKEN");
   if (status === 404 && body?.error === "USER_NOT_FOUND") return new AuthError("USER_NOT_FOUND");
   if (status === 400 && body?.error === "CANNOT_ADD_SELF") return new AuthError("CANNOT_ADD_SELF");
+  if (body?.error) return new AuthError(body.error, body?.message);
   return new AuthError("SERVER");
 }
 
